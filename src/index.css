@@ -199,13 +199,18 @@ textarea {
   height: 100vh;
   border: 1px solid var(--border);
   border-radius: 0;
-  background: var(--header);
+  background: rgba(248, 255, 251, 0.98);
   padding: 0 0 0.9rem;
   box-shadow: 0 24px 70px rgba(15, 71, 45, 0.24);
+  backdrop-filter: blur(22px) saturate(1.08);
   opacity: 0;
   pointer-events: none;
   transform: translateX(102%);
   transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+:root[data-theme='dark'] .mobile-menu {
+  background: rgba(5, 23, 14, 0.98);
 }
 
 .mobile-menu.open {
@@ -218,7 +223,7 @@ textarea {
   position: fixed;
   inset: 0;
   z-index: 69;
-  background: rgba(7, 23, 13, 0.18);
+  background: rgba(7, 23, 13, 0.38);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.24s ease;
@@ -234,15 +239,28 @@ textarea {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
+  background: rgba(248, 255, 251, 0.98);
   padding: 0.8rem 1rem;
+}
+
+:root[data-theme='dark'] .mobile-menu-head {
+  background: rgba(5, 23, 14, 0.98);
 }
 
 .mobile-menu button {
   display: block;
   width: 100%;
   border-radius: 8px;
-  padding: 0.65rem 1.6rem;
+  color: var(--text);
+  padding: 0.85rem 1.6rem;
   text-align: left;
+  font-weight: 800;
+}
+
+.mobile-menu > button:hover,
+.mobile-menu > button:focus-visible {
+  background: rgba(45, 151, 95, 0.12);
+  color: var(--accent);
 }
 
 .mobile-menu-head .brand,
@@ -1686,6 +1704,14 @@ textarea {
 }
 
 @media (max-width: 720px) {
+  .mobile-menu {
+    width: 100vw;
+  }
+
+  .mobile-menu-overlay.open {
+    opacity: 0.58;
+  }
+
   .product-card {
     min-height: 0;
   }
